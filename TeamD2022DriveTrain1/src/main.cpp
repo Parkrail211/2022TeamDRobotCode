@@ -32,12 +32,14 @@ int main() {
       double lMotorVelocity = Controller1.Axis3.position(percent) - Controller1.Axis4.position(percent);
       rMotor.setVelocity(rMotorVelocity, percent);
       lMotor.setVelocity(lMotorVelocity, percent);
+      rMotor.spin(forward);
+      lMotor.spin(forward);
       //
       
     }
     else {
-      rMotor.setVelocity(0, percent);
-      lMotor.setVelocity(0, percent);
+      rMotor.stop();
+      lMotor.stop();
     }
     #pragma endregion
   }
