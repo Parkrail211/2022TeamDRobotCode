@@ -1,3 +1,12 @@
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// rMotor               motor         1               
+// lMotor               motor         2               
+// Controller1          controller                    
+// FlyWheelMotors       motor_group   3, 4            
+// PushMotor            motor         5               
+// ---- END VEXCODE CONFIGURED DEVICES ----
 /*----------------------------------------------------------------------------*/
 /*                                                                            */
 /*    Module:       main.cpp                                                  */
@@ -41,6 +50,25 @@ int main() {
       rMotor.stop();
       lMotor.stop();
     }
+    #pragma endregion
+
+    #pragma region launcher
+    //if a button is pressed launch disk
+    if(Controller1.ButtonA.pressing() == true) {
+      FlyWheelMotors.setVelocity(100, percent);
+      FlyWheelMotors.spin(forward);
+      //spinn flywheel
+      vex::task::sleep(1000);
+      //wait for wheels to get to speed
+      PushMotor.setVelocity(15, percent);
+      PushMotor.setPosition(0, degrees);
+      PushMotor.spinToPosition(180, degrees);
+      PushMotor.spinToPosition(0, degrees);
+      //push arm
+      FlyWheelMotors.stop();
+      //stop wheels
+    }
+
     #pragma endregion
   }
 }

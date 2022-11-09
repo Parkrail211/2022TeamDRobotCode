@@ -7,6 +7,7 @@ extern motor rMotor;
 extern motor lMotor;
 extern controller Controller1;
 extern motor_group FlyWheelMotors;
+extern motor PushMotor;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
